@@ -3,17 +3,20 @@ import { Avatar } from "@material-ui/core";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import SearchIcon from "@material-ui/icons/Search";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
+import { useStateValue } from "../../stateProvider";
 
 import "./Header.css";
 
 function Header() {
+  const [{ user }] = useStateValue();
+
   return (
     <div className="header">
       <div className="header__left">
         <Avatar
           className="header__avatar"
-          alt="Victor Atencio"
-          src="https://lh3.googleusercontent.com/ogw/ADGmqu_SyIArAqnuO4Oyrka3CKxl0Od6sdjIsRUiScYZ=s192-c-mo"
+          alt={user?.displayName}
+          src={user?.photoURL}
         />
         <AccessTimeIcon />
       </div>
